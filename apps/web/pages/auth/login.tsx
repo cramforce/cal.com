@@ -2,19 +2,22 @@
 import MODULE from "module";
 
 const modules = [];
-const orig = MODULE._load;
-MODULE._load = function (request: string) {
-  // eslint-disable-next-line prefer-rest-params
-  const args = arguments;
-  const before = Date.now();
-  const exports = orig.apply(this, args);
-  const after = Date.now();
-  console.error(`require ${request} took ${after - before}ms`);
-  modules.push(`require ${request} took ${after - before}ms`);
-  return exports;
-};
+if (!proceess.env.CI) {
+  const orig = MODULE._load;
+  MODULE._load = function (request: string) {
+    // eslint-disable-next-line prefer-rest-params
+    const args = arguments;
+    const before = Date.now();
+    const exports = orig.apply(this, args);
+    const after = Date.now();
+    console.error(`require ${request} took ${after - before}ms`);
+    modules.push(`require ${request} took ${after - before}ms`);
+    return exports;
+  };
+}
 
 export default function Login(props: any) {
+  console.log(JSON.stringify(props, null, "  "));
   return <pre>{JSON.stringify(props, null, "  ")}</pre>;
 }
 
