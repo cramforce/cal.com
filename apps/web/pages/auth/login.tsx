@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import MODULE from "module";
 
+const modules = [];
 const orig = MODULE._load;
 MODULE._load = function (request: string) {
   // eslint-disable-next-line prefer-rest-params
@@ -9,6 +10,7 @@ MODULE._load = function (request: string) {
   const exports = orig.apply(this, args);
   const after = Date.now();
   console.error(`require ${request} took ${after - before}ms`);
+  modules.push(`require ${request} took ${after - before}ms`);
   return exports;
 };
 
@@ -123,6 +125,7 @@ export const getServerSideProps = async function getServerSideProps(): Promise<a
       return time - times[index - 1];
     }),
     hot: wasHot,
+    modules,
   };
   console.error("timing", props);
   return {
