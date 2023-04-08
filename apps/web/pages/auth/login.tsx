@@ -1,4 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import MODULE from "module";
+
+const orig = MODULE._load;
+MODULE._load = function (request: string) {
+  // eslint-disable-next-line prefer-rest-params
+  const args = arguments;
+  const before = Date.now();
+  const exports = orig.apply(this, args);
+  const after = Date.now();
+  console.error(`require ${request} took ${after - before}ms`);
+  return exports;
+};
 
 export default function Login(props: any) {
   return <pre>{JSON.stringify(props, null, "  ")}</pre>;
@@ -12,35 +24,35 @@ export const getServerSideProps = async function getServerSideProps(): Promise<a
   hot = true;
   /*
   [
-    0,
-    84,
-    2,
-    258,
-    17,
-    0,
-    0,
-    0,
-    0,
-    186,
-    93,
-    19,
-    2,
-    3532,
-    0,
-    0,
-    1,
-    0,
-    5,
-    1147,
-    3,
-    1,
-    13,
-    0,
-    2,
-    7,
-    2,
-    5,
-    7842
+    0, 0
+    84,0
+    2,1
+    258,2
+    17,3
+    0,4
+    0,5
+    0,6
+    0,7
+    186,8
+    93,9
+    19,10
+    2,11
+    3532,12
+    0,13
+    0,14
+    1,15
+    0,16
+    5,17
+    1147,17
+    3,19
+    1,20
+    13,21
+    0,22
+    2,23
+    7,24
+    2,25
+    5,26
+    7842,27
   ],*/
   const times = [Date.now()];
   await import("@calcom/prisma"); // 0
