@@ -70,7 +70,7 @@ const mapIdentityProvider = (providerName: string) => {
 export const AUTH_OPTIONS: AuthOptions = {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  adapter: calcomAdapter,
+  adapter: undefined,
   session: {
     strategy: "jwt",
   },
