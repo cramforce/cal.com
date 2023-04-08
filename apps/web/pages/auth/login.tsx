@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import MODULE from "module";
 
 const modules = [];
 if (!process.env.CI) {
-  const orig = MODULE._load;
   eval(`
+  const orig = MODULE._load;
   MODULE._load = function (request: string) {
     // eslint-disable-next-line prefer-rest-params
     const args = arguments;
