@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from "classnames";
 import { jwtVerify } from "jose";
 import type { GetServerSidePropsContext } from "next";
@@ -228,7 +229,13 @@ export default function Login({
 }
 
 // TODO: Once we understand how to retrieve prop types automatically from getServerSideProps, remove this temporary variable
-const _getServerSideProps = async function getServerSideProps(context: GetServerSidePropsContext) {
+const _getServerSideProps = async function getServerSideProps(
+  context: GetServerSidePropsContext
+): Promise<any> {
+  return {
+    props: {},
+  };
+
   const { req, res } = context;
 
   const session = await getServerSession({ req, res });
