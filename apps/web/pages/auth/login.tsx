@@ -10,66 +10,98 @@ let hot = false;
 export const getServerSideProps = async function getServerSideProps(): Promise<any> {
   const wasHot = hot;
   hot = true;
+  /*
+  [
+    0,
+    84,
+    2,
+    258,
+    17,
+    0,
+    0,
+    0,
+    0,
+    186,
+    93,
+    19,
+    2,
+    3532,
+    0,
+    0,
+    1,
+    0,
+    5,
+    1147,
+    3,
+    1,
+    13,
+    0,
+    2,
+    7,
+    2,
+    5,
+    7842
+  ],*/
   const times = [Date.now()];
-  await import("@calcom/prisma");
+  await import("@calcom/prisma"); // 0
   times.push(Date.now());
-  await import("classnames");
+  await import("classnames"); // 1
   times.push(Date.now());
-  await import("jose");
+  await import("jose"); // 2
   times.push(Date.now());
-  await import("next");
+  await import("next"); // 3
   times.push(Date.now());
-  await import("next-auth/react");
+  await import("next-auth/react"); // 4
   times.push(Date.now());
-  await import("next/link");
+  await import("next/link"); // 5
   times.push(Date.now());
-  await import("next/router");
+  await import("next/router"); // 6
   times.push(Date.now());
-  await import("react");
+  await import("react"); // 7
   times.push(Date.now());
-  await import("react-hook-form");
+  await import("react-hook-form"); // 8
   times.push(Date.now());
-  await import("react-icons/fa");
-  times.push(Date.now());
-
-  await import("@calcom/features/auth/SAMLLogin");
-  times.push(Date.now());
-  await import("@calcom/features/auth/lib/ErrorCode");
-  times.push(Date.now());
-  await import("@calcom/features/auth/lib/getServerSession");
-  times.push(Date.now());
-  await import("@calcom/features/ee/sso/lib/saml");
-  times.push(Date.now());
-  await import("@calcom/lib/constants");
-  times.push(Date.now());
-  await import("@calcom/lib/getSafeRedirectUrl");
-  times.push(Date.now());
-  await import("@calcom/lib/hooks/useLocale");
-  times.push(Date.now());
-  await import("@calcom/lib/telemetry");
-  times.push(Date.now());
-  await import("@calcom/ui");
-  times.push(Date.now());
-  await import("@calcom/ui/components/icon");
+  await import("react-icons/fa"); // 9
   times.push(Date.now());
 
-  await import("@lib/types/inferSSRProps");
+  await import("@calcom/features/auth/SAMLLogin"); // 10
   times.push(Date.now());
-  await import("@lib/withNonce");
+  await import("@calcom/features/auth/lib/ErrorCode"); // 11
   times.push(Date.now());
-  await import("@lib/withNonce");
+  await import("@calcom/features/auth/lib/getServerSession"); // 12
+  times.push(Date.now());
+  await import("@calcom/features/ee/sso/lib/saml"); // 13
+  times.push(Date.now());
+  await import("@calcom/lib/constants"); // 14
+  times.push(Date.now());
+  await import("@calcom/lib/getSafeRedirectUrl"); // 15
+  times.push(Date.now());
+  await import("@calcom/lib/hooks/useLocale"); // 16
+  times.push(Date.now());
+  await import("@calcom/lib/telemetry"); // 17
+  times.push(Date.now());
+  await import("@calcom/ui"); // 18
+  times.push(Date.now());
+  await import("@calcom/ui/components/icon"); // 19
   times.push(Date.now());
 
-  await import("@components/AddToHomescreen");
+  await import("@lib/types/inferSSRProps"); // 20
   times.push(Date.now());
-  await import("@components/auth/TwoFactor");
+  await import("@lib/withNonce"); // 21
   times.push(Date.now());
-  await import("@components/ui/AuthContainer");
+  await import("@lib/withNonce"); // 22
   times.push(Date.now());
 
-  await import("@server/lib/constants");
+  await import("@components/AddToHomescreen"); // 23
   times.push(Date.now());
-  await import("@server/lib/ssr");
+  await import("@components/auth/TwoFactor"); // 24
+  times.push(Date.now());
+  await import("@components/ui/AuthContainer"); // 25
+  times.push(Date.now());
+
+  await import("@server/lib/constants"); // 26
+  times.push(Date.now());
+  await import("@server/lib/ssr"); // 27
   times.push(Date.now());
   const props = {
     times: times.map((time, index) => {
